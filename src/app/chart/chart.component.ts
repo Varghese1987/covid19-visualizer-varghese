@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chart from 'chart.js';
 import { CovidServiceService } from '../covid-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chart',
@@ -14,10 +15,10 @@ export class ChartComponent implements OnInit {
   curedTrend;
   deathTrend; 
   isDataAvailable:boolean = false;
-  constructor(private covidService: CovidServiceService) {
+  constructor(private covidService: CovidServiceService, private router : Router) {
     this.covidService.retriveData().subscribe((data)=>{
       this.activeTrendCount = data.cases_time_series.map(data => parseInt(data.dailyconfirmed));
-      this.trendDataDates = data.cases_time_series.map(data => data.date);
+      this.trendDataDates = data.cases_time_series.map(data => data.date);      
       this.isDataAvailable = true;
     }) 
    }
