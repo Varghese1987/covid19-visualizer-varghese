@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chart from 'chart.js';
+import { CovidServiceService } from '../covid-service.service';
 
 @Component({
   selector: 'app-chart',
@@ -7,11 +8,23 @@ import * as Chart from 'chart.js';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-  constructor() { }
+
+  activeTrendCount = [];
+  trendDataDates = [];
+  curedTrend;
+  deathTrend; 
+  isDataAvailable:boolean = false;
+  constructor(private covidService: CovidServiceService) {
+    this.covidService.retriveData().subscribe((data)=>{
+      this.activeTrendCount = data.cases_time_series.map(data => parseInt(data.dailyconfirmed));
+      this.trendDataDates = data.cases_time_series.map(data => data.date);
+      this.isDataAvailable = true;
+    }) 
+   }
 
   lineChartData: Chart.ChartDataSets[] = [
     {
-      label: 'My First dataset',
+      label: 'Active',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -29,10 +42,10 @@ export class ChartComponent implements OnInit {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40],
+      data: this.activeTrendCount,
     },
   ];
-  lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  lineChartLabels: Array<any> = this.trendDataDates;
   lineChartOptions: any = {
     responsive: true
   };
@@ -52,7 +65,7 @@ export class ChartComponent implements OnInit {
         const fontSize = (height / 114).toFixed(2);
         ctx.font = `${fontSize}em sans-serif`;
         ctx.textBaseline = 'middle';
-        const text = 'Text Plugin';
+        const text = 'COVID19';
         const textX = Math.round((width - ctx.measureText(text).width) / 2);
         const textY = height / 2;
         ctx.fillText(text, textX, textY);

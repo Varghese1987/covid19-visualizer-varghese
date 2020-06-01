@@ -13,7 +13,6 @@ export class StateListComponent implements OnInit {
   constructor(private covidService: CovidServiceService) {
     this.covidService.retriveData().subscribe((data)=>{
       this.stateData = data.statewise.filter(state =>state.statecode != "TT");
-      console.log(this.stateData)
       this.isDataAvailable = true;
     })    
     

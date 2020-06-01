@@ -18,7 +18,6 @@ export class DashBoardComponent implements OnInit {
   isDataAvailable:boolean = false;
   constructor(private covidService: CovidServiceService) {
     this.covidService.retriveData().subscribe((data)=>{
-      console.log(data);
       this.nationalData = data.statewise.find(state =>state.statecode = "TT");
       this.activeTrendCount = data.cases_time_series.map(data => parseInt(data.dailyconfirmed));
       this.trendDataDates = data.cases_time_series.map(data => data.date);
