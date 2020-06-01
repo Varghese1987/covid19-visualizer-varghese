@@ -26,7 +26,8 @@ export class RegisterComponent implements OnInit {
 
   register(){
     this.userService.storeUser(this.registerForm.value).subscribe((response)=>{
-      alert(response);
+      console.log(response)
+      alert(response.message);
     })
     this.router.navigate(["/"]);
     
