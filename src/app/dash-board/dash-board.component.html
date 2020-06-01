@@ -1,0 +1,36 @@
+<div class="" *ngIf="isDataAvailable">
+<div class="container">
+  <div class="row">
+    <div class="card-deck">
+      <div class="card text-white col-lg-2 bg-danger mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <img class="d-block mx-auto mb-4" [src] = "corona" alt="" width="60" height="50">
+          <h5 class="card-title text-center">{{nationalData.confirmed}}</h5>
+          <p class="card-text text-center">Confirmed cases</p>
+        </div>
+      </div>
+      <div class="card text-white col-lg-2 bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <img class="d-block mx-auto mb-4" [src] = "corona" alt="" width="60" height="50">
+          <h5 class="card-title text-center">{{nationalData.active}}</h5>
+          <p class="card-text text-center">Active cases</p>
+        </div>
+      </div>
+      <div class="card text-white col-lg-2 bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <img class="d-block mx-auto mb-4" [src] = "corona" alt="" width="60" height="50">
+          <h5 class="card-title text-center">{{nationalData.recovered}}</h5>
+          <p class="card-text text-center">Cured</p>
+        </div>
+      </div>
+      <div class="card col-lg-2 bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <img class="d-block mx-auto mb-4" [src] = "corona" alt="" width="60" height="50">
+          <h5 class="card-title text-center">{{nationalData.deaths}}</h5>
+          <p class="card-text text-center">Deaths</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

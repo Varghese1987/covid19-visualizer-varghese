@@ -1,0 +1,22 @@
+<div *ngIf="isDataAvailable">
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">State / UT</th>
+            <th scope="col">Confirmed</th>
+            <th scope="col">Active</th>
+            <th scope="col">Recovered</th>
+            <th scope="col">Deceased</th>
+          </tr>
+        </thead>
+        <tbody *ngFor = "let state of stateData">
+          <tr>
+            <td>{{state.state}}</td>
+            <td>{{state.confirmed}}</td>
+            <td>{{state.active}}</td>
+            <td>{{state.recovered}}</td>
+            <td>{{state.deaths}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
