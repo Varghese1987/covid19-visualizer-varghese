@@ -16,6 +16,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ChartComponent } from './chart/chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { DistrictComponent } from './district/district.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
     SignInComponent,
     HomeComponent,
     RegisterComponent,
-    ChartComponent
+    ChartComponent,
+    DistrictComponent
   ],
   imports: [
     BrowserModule,

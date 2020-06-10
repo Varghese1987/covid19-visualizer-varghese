@@ -6,6 +6,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import { ChartComponent } from './chart/chart.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth.guard';
+import { DistrictComponent } from './district/district.component';
 
 
 const routes: Routes = [
@@ -19,11 +21,13 @@ const routes: Routes = [
   },
   {
     path:"dash-board",
-    component: DashBoardComponent
+    component: DashBoardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"home",
     component:HomeComponent,
+    canActivate: [AuthGuard],
     children : [
       {
         path:"chart",
@@ -32,6 +36,10 @@ const routes: Routes = [
       {
         path:"state-list",
         component:StateListComponent,
+      },
+      {
+        path:"district/:id",
+        component:DistrictComponent,
       }
     ]
   }  

@@ -1,9 +1,14 @@
 <div class="container">
-    <form action="" *ngIf="isDataAvailable">
-        <div class="row">
-            <canvas ngChartjs [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-                [legend]="lineChartLegend" [chartType]="lineChartType" [inlinePlugins]="inlinePlugin">
-            </canvas>
+    <div class="row">
+        <div class="col-lg-6">
+            <label for="confirm">Confirm Cases Trend</label>
+            <canvas id="confirm">{{chartConfirm}}</canvas>
         </div>
-    </form>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <label for="recovered">Recovered Trend</label>
+            <canvas id="recovered">{{chartConfirm}}</canvas>
+        </div>
+    </div>
 </div>

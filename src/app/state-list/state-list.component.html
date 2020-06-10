@@ -11,7 +11,7 @@
         </thead>
         <tbody *ngFor = "let state of stateData">
           <tr>
-            <td>{{state.state}}</td>
+            <td><button class="btn btn-primary" [routerLink]  = "['/home/district/',state.statecode]">State Details</button>{{state.state}}</td>
             <td>{{state.confirmed}}</td>
             <td>{{state.active}}</td>
             <td>{{state.recovered}}</td>

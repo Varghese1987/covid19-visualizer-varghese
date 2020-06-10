@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +11,12 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
 loginForm : FormGroup;
-  constructor(private fb:FormBuilder, private userService : UserService, private router : Router) {
+  constructor(
+    private fb:FormBuilder, 
+    private userService : UserService, 
+    private router : Router,
+    private toastr : ToastrService
+    ) {
     this.loginForm = this.fb.group({
       email:this.fb.control("",[Validators.required,Validators.email]),
       password:this.fb.control("",Validators.required)
@@ -23,7 +29,9 @@ loginForm : FormGroup;
 
   login(){
     this.userService.signIn(this.loginForm.value).subscribe( response =>{
-      this.router.navigate(["/home"]);      
+      localStorage.setItem('responseToken',response['token'])
+      this.router.navigate(["/home"]);
+      this.toastr.success("welcome!")      
     },
     error =>{
       console.log(error.error.message)

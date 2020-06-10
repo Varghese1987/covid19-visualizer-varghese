@@ -14,5 +14,8 @@ retriveData():Observable<any>{
     return this.http.get("https://api.covid19india.org/data.json");        
 }
 
+retriveState():Observable<any>{
+  return this.http.get("https://api.covid19india.org/v2/state_district_wise.json")
+}
 
 }
